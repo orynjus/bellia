@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bellia Make Up - Tata Rias Pengantin Mewah & Elegan</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration for Custom Colors & Fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#FDFBF4',
+                            200: '#F8EAC6',
+                            300: '#EBD292',
+                            400: '#E0BB65',
+                            500: '#D4AF37', // Classic Gold
+                            600: '#B08D26',
+                            700: '#8A6D1C',
+                            800: '#664F15',
+                            900: '#42320B',
+                        },
+                        dark: '#1A1814', /* Warna gelap yang lebih hangat & mewah */
+                        cream: '#FAF8F5', /* Champagne / Nude terang */
+                        nude: '#F4F1EA' /* Champagne / Nude sedikit lebih gelap */
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Custom Styles */
+        .hero-bg {
+            background-image: linear-gradient(rgba(18, 18, 18, 0.6), rgba(18, 18, 18, 0.7)), url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            background-position: center 20%;
+            background-attachment: fixed;
+        }
+        
+        .gallery-img-container {
+            overflow: hidden;
+        }
+        
+        .gallery-img {
+            transition: transform 0.7s ease;
+        }
+        
+        .gallery-img-container:hover .gallery-img {
+            transform: scale(1.1);
+        }
+
+        /* Nav Transition */
+        #navbar {
+            transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+        }
+        .nav-scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
+        .nav-text-scrolled {
+            color: #121212 !important;
+        }
+        
+        /* Floating WA Animation */
+        @keyframes pulse-wa {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        .floating-wa {
+            animation: pulse-wa 2s infinite;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-cream antialiased">
+
+    <!-- WhatsApp Data Setup -->
+    <script>
+        const waNumber = "6285747321404";
+        const waMessage = encodeURIComponent("Halo Bellia Make Up, saya tertarik dan ingin konsultasi mengenai layanan rias pengantin/make up. Boleh minta informasi paket dan pricelist?");
+        const waLink = `https://api.whatsapp.com/send?phone=${waNumber}&text=${waMessage}`;
+    </script>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 py-6 transition-all duration-300">
+        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
+            <a href="#" class="font-serif text-2xl md:text-3xl font-bold tracking-wider text-white" id="nav-brand">
+                BELLIA <span class="text-gold-500">Make Up</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#tentang" class="text-sm uppercase tracking-widest text-white hover:text-gold-500 transition-colors nav-link">Tentang</a>
+                <a href="#layanan" class="text-sm uppercase tracking-widest text-white hover:text-gold-500 transition-colors nav-link">Layanan</a>
+                <a href="#portofolio" class="text-sm uppercase tracking-widest text-white hover:text-gold-500 transition-colors nav-link">Portofolio</a>
+                <button onclick="window.open(waLink, '_blank')" class="bg-gold-500 text-white px-6 py-2 rounded-none hover:bg-gold-600 transition-colors uppercase tracking-widest text-sm font-semibold flex items-center gap-2">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i> Hubungi Kami
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white focus:outline-none" id="mobile-menu-btn">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden bg-white w-full absolute top-full left-0 shadow-lg border-t border-gray-100">
+            <div class="flex flex-col px-6 py-4 space-y-4">
+                <a href="#tentang" class="text-dark uppercase tracking-widest text-sm py-2 border-b border-gray-100">Tentang</a>
+                <a href="#layanan" class="text-dark uppercase tracking-widest text-sm py-2 border-b border-gray-100">Layanan</a>
+                <a href="#portofolio" class="text-dark uppercase tracking-widest text-sm py-2 border-b border-gray-100">Portofolio</a>
+                <button onclick="window.open(waLink, '_blank')" class="bg-gold-500 text-white px-4 py-3 text-center uppercase tracking-widest text-sm font-semibold mt-2">
+                    Hubungi WhatsApp
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg h-screen relative flex items-center justify-center">
+        <div class="container mx-auto px-6 text-center relative z-10 pt-20">
+            <p class="text-gold-400 uppercase tracking-[0.3em] text-sm md:text-base mb-4 font-semibold">Make Up Artist Profesional</p>
+            <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl text-white mb-6 leading-tight">
+                Pancarkan Pesona Anggun <br> di Hari Bahagiamu
+            </h1>
+            <p class="text-gray-300 text-base md:text-lg max-w-2xl mx-auto mb-10 font-light">
+                Layanan tata rias pengantin mewah dan elegan oleh Bellia Make Up. Kami mewujudkan penampilan sempurna untuk momen tak terlupakan Anda.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button onclick="window.open(waLink, '_blank')" class="bg-gold-500 text-white px-8 py-4 uppercase tracking-widest text-sm hover:bg-gold-600 transition-colors border border-gold-500 flex items-center justify-center gap-2">
+                    <i data-lucide="calendar-check" class="w-4 h-4"></i> Booking Sekarang
+                </button>
+                <a href="#portofolio" class="bg-transparent text-white px-8 py-4 uppercase tracking-widest text-sm hover:bg-white hover:text-dark transition-colors border border-white flex items-center justify-center gap-2">
+                    <i data-lucide="image" class="w-4 h-4"></i> Lihat Hasil Riasan
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="text-white w-8 h-8 opacity-70"></i>
+        </div>
+    </section>
+
+    <!-- Tentang / Fitur Section -->
+    <section id="tentang" class="py-24 bg-cream">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2">
+                    <div class="relative">
+                        <img src="DSCF1097.JPG" alt="Proses Make Up Bellia MUA" class="w-full object-cover rounded-none shadow-xl aspect-[3/2]">
+                        <div class="absolute -bottom-8 -right-8 w-48 h-48 bg-gold-100 -z-10 hidden md:block"></div>
+                        <div class="absolute -top-8 -left-8 w-48 h-48 border-2 border-gold-500 -z-10 hidden md:block"></div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="h-px w-12 bg-gold-500"></div>
+                        <p class="text-gold-500 uppercase tracking-widest text-sm font-semibold">Tentang Bellia</p>
+                    </div>
+                    <h2 class="font-serif text-3xl md:text-4xl text-dark mb-6 leading-snug">
+                        Sentuhan Tangan Ahli untuk Kecantikan yang Abadi
+                    </h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed font-light text-lg">
+                        Berlokasi di Pekalongan, <strong>Bellia Make Up</strong> berdedikasi untuk memberikan layanan tata rias terbaik dengan standar kualitas premium. Kami mengerti bahwa pernikahan adalah momen sakral, dan tugas kami adalah memastikan Anda tampil memukau dengan rasa percaya diri yang tinggi.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-gold-50 p-3 text-gold-500 rounded-full">
+                                <i data-lucide="sparkles" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-serif font-semibold text-xl mb-1">Flawless & Awet</h3>
+                                <p class="text-sm text-gray-500">Teknik riasan modern yang tahan lama seharian tanpa crack.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="bg-gold-50 p-3 text-gold-500 rounded-full">
+                                <i data-lucide="crown" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-serif font-semibold text-xl mb-1">Produk Premium</h3>
+                                <p class="text-sm text-gray-500">Hanya menggunakan kosmetik high-end yang aman untuk kulit.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Layanan Section -->
+    <section id="layanan" class="py-24 bg-nude">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <p class="text-gold-500 uppercase tracking-widest text-sm font-semibold mb-3">Layanan Kami</p>
+                <h2 class="font-serif text-3xl md:text-5xl text-dark mb-6">Pilihan Paket Riasan</h2>
+                <p class="text-gray-600 font-light">Sesuaikan kebutuhan tata rias Anda dengan berbagai pilihan paket dari Bellia Make Up.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 text-center border border-gray-100 hover:border-gold-300 transition-all hover:-translate-y-2 group shadow-sm hover:shadow-xl">
+                    <div class="w-16 h-16 bg-gold-50 mx-auto rounded-full flex items-center justify-center text-gold-500 mb-6 group-hover:bg-gold-500 group-hover:text-white transition-colors">
+                        <i data-lucide="gem" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl text-dark mb-3">Wedding Make Up</h3>
+                    <p class="text-gray-500 text-sm mb-6 line-clamp-3">Riasan pengantin adat maupun internasional yang mewah, elegan, dan manglingi untuk ratu sehari.</p>
+                    <button onclick="window.open(waLink, '_blank')" class="text-gold-500 font-semibold uppercase text-xs tracking-widest hover:text-gold-700">Tanya Harga &rarr;</button>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-white p-8 text-center border border-gray-100 hover:border-gold-300 transition-all hover:-translate-y-2 group shadow-sm hover:shadow-xl relative">
+                    <div class="absolute top-0 inset-x-0 h-1 bg-gold-500"></div>
+                    <div class="w-16 h-16 bg-gold-50 mx-auto rounded-full flex items-center justify-center text-gold-500 mb-6 group-hover:bg-gold-500 group-hover:text-white transition-colors">
+                        <i data-lucide="heart-handshake" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl text-dark mb-3">Lamaran / Engagement</h3>
+                    <p class="text-gray-500 text-sm mb-6 line-clamp-3">Tampil cantik natural, fresh, dan mempesona di hari ikatan janji suci Anda bersama pasangan.</p>
+                    <button onclick="window.open(waLink, '_blank')" class="text-gold-500 font-semibold uppercase text-xs tracking-widest hover:text-gold-700">Tanya Harga &rarr;</button>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-white p-8 text-center border border-gray-100 hover:border-gold-300 transition-all hover:-translate-y-2 group shadow-sm hover:shadow-xl">
+                    <div class="w-16 h-16 bg-gold-50 mx-auto rounded-full flex items-center justify-center text-gold-500 mb-6 group-hover:bg-gold-500 group-hover:text-white transition-colors">
+                        <i data-lucide="camera" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl text-dark mb-3">Pre-Wedding & Party</h3>
+                    <p class="text-gray-500 text-sm mb-6 line-clamp-3">Layanan tata rias untuk pemotretan pre-wedding, wisuda, atau hadiri acara pesta penting.</p>
+                    <button onclick="window.open(waLink, '_blank')" class="text-gold-500 font-semibold uppercase text-xs tracking-widest hover:text-gold-700">Tanya Harga &rarr;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio / Gallery Section -->
+    <section id="portofolio" class="py-24 bg-dark text-white">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+                <div class="max-w-2xl">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="h-px w-12 bg-gold-500"></div>
+                        <p class="text-gold-400 uppercase tracking-widest text-sm font-semibold">Galeri Kami</p>
+                    </div>
+                    <h2 class="font-serif text-3xl md:text-5xl text-white">Hasil Make Up Cantik</h2>
+                </div>
+                <button onclick="window.open('https://instagram.com/bellia_makeup', '_blank')" class="hidden md:flex items-center gap-2 border border-gold-500 text-gold-400 px-6 py-3 uppercase tracking-widest text-sm hover:bg-gold-500 hover:text-white transition-colors mt-6 md:mt-0">
+                    <i data-lucide="instagram" class="w-5 h-5"></i> Lihat Lebih Banyak di IG
+                </button>
+            </div>
+
+            <!-- Masonry-style Grid for Portfolio -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+                <!-- 1. Adat Sunda (IMG_8440) -->
+                <div class="gallery-img-container aspect-[3/4] relative group shadow-lg">
+                    <img src="IMG_8440.JPG" alt="Make Up Adat Sunda Siger" class="gallery-img w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 md:p-8">
+                        <div>
+                            <p class="font-serif text-2xl md:text-3xl text-white mb-1">Sunda Siger</p>
+                            <p class="text-gold-300 text-sm tracking-widest uppercase">Flawless & Anggun</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 2. Adat Jawa (IMG_8588 - Copy) -->
+                <div class="gallery-img-container aspect-[3/4] relative group shadow-lg">
+                    <img src="IMG_8588 - Copy.JPG" alt="Make Up Adat Jawa Paes" class="gallery-img w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 md:p-8">
+                        <div>
+                            <p class="font-serif text-2xl md:text-3xl text-white mb-1">Paes Jawa</p>
+                            <p class="text-gold-300 text-sm tracking-widest uppercase">Classic & Elegant</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 3. Modern Hijab (DSCF7504) -->
+                <div class="gallery-img-container aspect-[3/4] relative group shadow-lg">
+                    <img src="DSCF7504.JPG" alt="Make Up Modern Hijab Ungu" class="gallery-img w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 md:p-8">
+                        <div>
+                            <p class="font-serif text-2xl md:text-3xl text-white mb-1">Modern Elegan</p>
+                            <p class="text-gold-300 text-sm tracking-widest uppercase">Soft Glam Look</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 4. Engagement / Modern Look (DSCF8836) -->
+                <div class="gallery-img-container aspect-[3/4] relative group shadow-lg">
+                    <img src="DSCF8836.JPG" alt="Make Up Modern Look Maroon" class="gallery-img w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 md:p-8">
+                        <div>
+                            <p class="font-serif text-2xl md:text-3xl text-white mb-1">Engagement Look</p>
+                            <p class="text-gold-300 text-sm tracking-widest uppercase">Fresh & Beautiful</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 5. Modern Wedding Hijab (DSCF9632) -->
+                <div class="gallery-img-container aspect-[3/4] relative group shadow-lg">
+                    <img src="DSCF9632.JPG" alt="Make Up Pengantin Hijab Modern" class="gallery-img w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 md:p-8">
+                        <div>
+                            <p class="font-serif text-2xl md:text-3xl text-white mb-1">Modern Wedding</p>
+                            <p class="text-gold-300 text-sm tracking-widest uppercase">Elegant & Sweet</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-10 text-center md:hidden">
+                <button onclick="window.open('https://instagram.com/bellia_makeup', '_blank')" class="border border-gold-500 text-gold-400 px-6 py-3 uppercase tracking-widest text-sm hover:bg-gold-500 hover:text-white transition-colors w-full flex items-center justify-center gap-2">
+                    <i data-lucide="instagram" class="w-5 h-5"></i> Lihat Lebih Banyak di IG
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA & Contact / Alamat Section -->
+    <section class="py-24 bg-cream">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="bg-white p-10 md:p-16 shadow-2xl relative overflow-hidden">
+                <!-- Background Pattern -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-gold-100 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-gold-200 rounded-full blur-3xl opacity-30 translate-y-1/2 -translate-x-1/2"></div>
+
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="font-serif text-4xl text-dark mb-6">Siap Menjadi Ratu di Hari Bahagiamu?</h2>
+                        <p class="text-gray-600 mb-8 text-lg font-light">
+                            Jangan ragu untuk berkonsultasi mengenai konsep impian Anda. Hubungi kami untuk cek ketersediaan tanggal, paket harga, atau sekadar bertanya.
+                        </p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="text-gold-500 mt-1">
+                                    <i data-lucide="map-pin" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-dark mb-1">Alamat Studio</h4>
+                                    <p class="text-gray-600 text-sm leading-relaxed">
+                                        Donowangun Lor<br>
+                                        Kec. Talun, Kab. Pekalongan<br>
+                                        Jawa Tengah
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-4">
+                                <div class="text-gold-500">
+                                    <i data-lucide="phone" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-dark mb-1">WhatsApp</h4>
+                                    <p class="text-gray-600 text-sm">0857-4732-1404</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4 cursor-pointer group" onclick="window.open('https://instagram.com/bellia_makeup', '_blank')">
+                                <div class="text-gold-500 group-hover:scale-110 transition-transform">
+                                    <i data-lucide="instagram" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-dark mb-1 group-hover:text-gold-500 transition-colors">Instagram</h4>
+                                    <p class="text-gray-600 text-sm">@bellia_makeup</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center lg:text-right flex flex-col items-center lg:items-end">
+                        <p class="text-sm uppercase tracking-widest text-gray-500 mb-4">Konsultasi Langsung</p>
+                        <button onclick="window.open(waLink, '_blank')" class="bg-[#25D366] hover:bg-[#1DA851] text-white px-8 py-5 rounded-md shadow-lg shadow-[#25D366]/30 flex items-center justify-center gap-3 transition-all transform hover:-translate-y-1 w-full sm:w-auto text-lg font-semibold">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                            Chat via WhatsApp
+                        </button>
+                        <p class="text-xs text-gray-400 mt-4 italic">*Fast respon pada jam kerja.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12 border-t border-gray-800">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="font-serif text-2xl font-bold tracking-wider mb-6">
+                BELLIA <span class="text-gold-500">Make Up</span>
+            </h3>
+            <p class="text-gray-400 text-sm mb-8 font-light max-w-md mx-auto">
+                Mewujudkan tata rias pengantin elegan, flawless, dan memukau khusus untuk hari paling bersejarah dalam hidup Anda.
+            </p>
+            <div class="flex justify-center items-center gap-6 mb-8">
+                <a href="https://instagram.com/bellia_makeup" target="_blank" class="text-gray-400 hover:text-gold-500 transition-colors flex items-center gap-2">
+                    <i data-lucide="instagram" class="w-6 h-6"></i>
+                    <span class="text-sm tracking-widest">@bellia_makeup</span>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-gold-500 transition-colors"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                <a href="#" class="text-gray-400 hover:text-gold-500 transition-colors"><i data-lucide="mail" class="w-6 h-6"></i></a>
+            </div>
+            <p class="text-gray-500 text-xs uppercase tracking-widest">
+                &copy; 2026 Bellia Make Up. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="javascript:void(0)" onclick="window.open(waLink, '_blank')" class="fixed bottom-6 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-2xl z-50 floating-wa hover:bg-[#1DA851] transition-colors group flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+        <span class="absolute right-full mr-4 bg-white text-dark text-sm px-4 py-2 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-semibold pointer-events-none">
+            Tanya Pricelist Make Up
+        </span>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        const navBrand = document.getElementById('nav-brand');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+                navBrand.classList.add('text-dark');
+                navBrand.classList.remove('text-white');
+                mobileMenuBtn.classList.add('text-dark');
+                mobileMenuBtn.classList.remove('text-white');
+                navLinks.forEach(link => {
+                    link.classList.add('nav-text-scrolled');
+                    link.classList.remove('text-white');
+                });
+            } else {
+                navbar.classList.remove('nav-scrolled');
+                navBrand.classList.remove('text-dark');
+                navBrand.classList.add('text-white');
+                mobileMenuBtn.classList.remove('text-dark');
+                mobileMenuBtn.classList.add('text-white');
+                navLinks.forEach(link => {
+                    link.classList.remove('nav-text-scrolled');
+                    link.classList.add('text-white');
+                });
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
