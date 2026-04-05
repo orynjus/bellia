@@ -120,7 +120,7 @@
         .delay-300 { transition-delay: 300ms; }
     </style>
 </head>
-<body class="font-sans text-gray-800 bg-cream antialiased overflow-x-hidden">
+<body class="font-sans text-gray-800 bg-cream antialiased">
 
     <!-- WhatsApp Data Setup -->
     <script>
@@ -164,7 +164,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-bg min-h-[100svh] relative flex items-center justify-center">
+    <section class="hero-bg min-h-[100svh] relative flex items-center justify-center overflow-hidden">
         <div class="container mx-auto px-4 sm:px-6 lg:px-12 text-center relative z-10 pt-28 pb-16 sm:py-24 lg:py-32 reveal">
             <p class="text-gold-400 uppercase tracking-[0.3em] sm:tracking-[0.4em] text-[10px] sm:text-xs md:text-sm mb-4 sm:mb-6 font-bold drop-shadow-md">Professional Make Up Artist</p>
             <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white mb-4 sm:mb-6 leading-[1.1] md:leading-[1.1] drop-shadow-lg">
@@ -238,7 +238,7 @@
     </section>
 
     <!-- Pricelist Section -->
-    <section id="pricelist" class="py-16 sm:py-20 lg:py-28 bg-nude relative">
+    <section id="pricelist" class="py-16 sm:py-20 lg:py-28 bg-nude relative overflow-hidden">
         <!-- Abstract BG shapes -->
         <div class="absolute top-0 right-0 w-64 h-64 lg:w-96 lg:h-96 bg-gold-200/40 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/3"></div>
         <div class="absolute bottom-0 left-0 w-64 h-64 lg:w-96 lg:h-96 bg-gold-300/30 rounded-full blur-3xl opacity-50 translate-y-1/2 -translate-x-1/3"></div>
@@ -548,7 +548,7 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portofolio" class="py-16 sm:py-20 lg:py-28 bg-dark text-white relative">
+    <section id="portofolio" class="py-16 sm:py-20 lg:py-28 bg-dark text-white relative overflow-hidden">
         <div class="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
             <!-- Header Portfolio -->
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 sm:gap-6 md:gap-0 mb-10 sm:mb-12 lg:mb-16 reveal">
@@ -631,7 +631,7 @@
     </section>
 
     <!-- CTA & Contact Section -->
-    <section class="py-16 sm:py-20 lg:py-32 bg-cream">
+    <section class="py-16 sm:py-20 lg:py-32 bg-cream overflow-hidden">
         <div class="container mx-auto px-4 sm:px-6 lg:px-12">
             <div class="bg-white p-6 sm:p-10 lg:p-16 shadow-2xl rounded-2xl sm:rounded-3xl relative overflow-hidden reveal border border-gold-50/50">
                 <!-- Background Pattern -->
@@ -726,16 +726,16 @@
     </footer>
 
     <!-- Floating WhatsApp Button -->
-    <a href="javascript:void(0)" onclick="window.open(waLink, '_blank')" class="fixed bottom-4 right-4 md:bottom-8 md:right-8 bg-[#25D366] text-white p-3 md:p-4 rounded-full shadow-2xl z-50 floating-wa hover:bg-[#1DA851] transition-all group flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+    <a href="javascript:void(0)" onclick="window.open(waLink, '_blank')" class="fixed bottom-6 right-5 sm:bottom-8 sm:right-8 bg-[#25D366] text-white p-3.5 sm:p-4 lg:p-4 rounded-full shadow-2xl z-[999] floating-wa hover:bg-[#1DA851] transition-all group flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle w-7 h-7 sm:w-8 sm:h-8"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
         <span class="absolute right-full mr-3 sm:mr-4 bg-white text-dark text-[10px] sm:text-xs lg:text-sm px-3 py-2 sm:px-4 sm:py-2.5 rounded-lg sm:rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-all transform translate-x-4 group-hover:translate-x-0 whitespace-nowrap font-bold pointer-events-none hidden sm:block border border-gray-100">
             Tanya Pricelist Make Up
         </span>
     </a>
 
     <!-- Scroll to Top Button -->
-    <button id="scrollToTopBtn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="fixed bottom-20 right-4 md:bottom-28 md:right-8 bg-white text-dark p-3 rounded-full shadow-xl z-40 opacity-0 pointer-events-none translate-y-4 transition-all duration-300 hover:bg-gold-500 hover:text-white border border-gray-100 flex items-center justify-center" aria-label="Scroll to top">
-        <i data-lucide="arrow-up" class="w-5 h-5"></i>
+    <button id="scrollToTopBtn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="fixed bottom-24 right-5 sm:bottom-28 sm:right-8 bg-white text-dark p-3.5 sm:p-4 lg:p-4 rounded-full shadow-xl z-[998] opacity-0 pointer-events-none translate-y-4 transition-all duration-300 hover:bg-gold-500 hover:text-white border border-gray-100 flex items-center justify-center" aria-label="Scroll to top">
+        <i data-lucide="arrow-up" class="w-5 h-5 sm:w-6 sm:h-6"></i>
     </button>
 
     <!-- Scripts -->
