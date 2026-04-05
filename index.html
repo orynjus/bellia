@@ -52,7 +52,13 @@
             background-image: linear-gradient(to bottom, rgba(26, 24, 20, 0.5), rgba(26, 24, 20, 0.8)), url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&q=80&w=1920');
             background-size: cover;
             background-position: center 20%;
-            background-attachment: fixed;
+            background-attachment: scroll; /* Diubah agar gambar kuas tidak bergerak/glitch di HP */
+        }
+        
+        @media (min-width: 1024px) {
+            .hero-bg {
+                background-attachment: fixed; /* Efek fixed parallax hanya diaktifkan pada layar Laptop/PC */
+            }
         }
         
         .gallery-img-container {
@@ -120,7 +126,7 @@
         .delay-300 { transition-delay: 300ms; }
     </style>
 </head>
-<body class="font-sans text-gray-800 bg-cream antialiased">
+<body class="font-sans text-gray-800 bg-cream antialiased overflow-x-hidden">
 
     <!-- WhatsApp Data Setup -->
     <script>
@@ -194,7 +200,8 @@
             <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
                 <div class="w-full lg:w-1/2 reveal">
                     <div class="relative w-full max-w-sm sm:max-w-md mx-auto lg:max-w-none">
-                        <img src="DSCF1097.JPG" alt="Proses Make Up Bellia MUA" class="w-full object-cover rounded-3xl shadow-2xl aspect-square sm:aspect-[4/3] lg:aspect-[3/2] z-10 relative" loading="lazy">
+                        <!-- Diperbarui agar lanskap di semua layar -->
+                        <img src="DSCF1097.JPG" alt="Proses Make Up Bellia MUA" class="w-full object-cover rounded-3xl shadow-2xl aspect-[4/3] lg:aspect-[3/2] z-10 relative" loading="lazy">
                         <div class="absolute -bottom-6 -right-6 md:-bottom-8 md:-right-8 w-full h-full bg-gold-200 rounded-3xl z-0 hidden sm:block"></div>
                         <!-- Decorative elements -->
                         <i data-lucide="sparkles" class="absolute -top-6 -left-6 sm:-top-8 sm:-left-8 w-12 h-12 sm:w-16 sm:h-16 text-gold-300 opacity-50 hidden sm:block z-20"></i>
@@ -254,15 +261,239 @@
                 <p class="text-gray-600 font-light text-xs sm:text-sm lg:text-base px-2">Pilih paket yang paling sesuai untuk menyempurnakan hari istimewa Anda.</p>
             </div>
 
-            <!-- Tabs Navigation -->
+            <!-- Tabs Navigation - Reordered to Wedding All In -> Paket Basic -> Makeup Satuan -->
             <div class="flex flex-wrap justify-center gap-2 sm:gap-3 lg:gap-4 mb-10 sm:mb-12 reveal delay-100">
-                <button onclick="switchTab('tab-satuan')" id="btn-tab-satuan" class="tab-btn px-4 py-2.5 sm:px-6 sm:py-3 lg:px-8 lg:py-4 text-[10px] sm:text-xs lg:text-sm font-bold uppercase tracking-widest bg-dark text-white rounded-full shadow-lg transition-all border border-dark flex-grow sm:flex-grow-0 text-center">Makeup Satuan</button>
+                <button onclick="switchTab('tab-wedding')" id="btn-tab-wedding" class="tab-btn px-4 py-2.5 sm:px-6 sm:py-3 lg:px-8 lg:py-4 text-[10px] sm:text-xs lg:text-sm font-bold uppercase tracking-widest bg-dark text-white rounded-full shadow-lg transition-all border border-dark flex-grow sm:flex-grow-0 text-center">Wedding All-In</button>
                 <button onclick="switchTab('tab-basic')" id="btn-tab-basic" class="tab-btn px-4 py-2.5 sm:px-6 sm:py-3 lg:px-8 lg:py-4 text-[10px] sm:text-xs lg:text-sm font-bold uppercase tracking-widest bg-white text-gray-500 rounded-full shadow-sm hover:shadow-md transition-all border border-transparent hover:text-dark flex-grow sm:flex-grow-0 text-center">Paket Basic</button>
-                <button onclick="switchTab('tab-wedding')" id="btn-tab-wedding" class="tab-btn px-4 py-2.5 sm:px-6 sm:py-3 lg:px-8 lg:py-4 text-[10px] sm:text-xs lg:text-sm font-bold uppercase tracking-widest bg-white text-gray-500 rounded-full shadow-sm hover:shadow-md transition-all border border-transparent hover:text-dark w-full sm:w-auto text-center mt-2 sm:mt-0">Wedding All-In</button>
+                <button onclick="switchTab('tab-satuan')" id="btn-tab-satuan" class="tab-btn px-4 py-2.5 sm:px-6 sm:py-3 lg:px-8 lg:py-4 text-[10px] sm:text-xs lg:text-sm font-bold uppercase tracking-widest bg-white text-gray-500 rounded-full shadow-sm hover:shadow-md transition-all border border-transparent hover:text-dark w-full sm:w-auto text-center mt-2 sm:mt-0">Makeup Satuan</button>
             </div>
 
-            <!-- TAB 1: MAKEUP SATUAN -->
-            <div id="tab-satuan" class="tab-content active">
+            <!-- TAB 1: WEDDING ALL-IN (Now First & Active) -->
+            <div id="tab-wedding" class="tab-content active">
+                
+                <!-- Free Features Banner for Big Packages -->
+                <div class="bg-white/80 backdrop-blur-sm border border-gold-200 p-4 sm:p-6 mb-6 sm:mb-10 text-center rounded-2xl shadow-sm">
+                    <p class="text-xs sm:text-sm text-gold-800 font-bold mb-2 sm:mb-3 uppercase tracking-widest">Bonus Spesial All-In Package:</p>
+                    <div class="flex flex-wrap justify-center items-center gap-2 sm:gap-3 lg:gap-6 text-[10px] sm:text-xs lg:text-sm font-medium text-gray-700">
+                        <span class="bg-gold-50 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full flex items-center gap-1 sm:gap-1.5"><i data-lucide="sparkles" class="text-gold-500 w-3 h-3 sm:w-4 sm:h-4"></i> Henna</span>
+                        <span class="bg-gold-50 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full flex items-center gap-1 sm:gap-1.5"><i data-lucide="sparkles" class="text-gold-500 w-3 h-3 sm:w-4 sm:h-4"></i> Softlens</span>
+                        <span class="bg-gold-50 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full flex items-center gap-1 sm:gap-1.5"><i data-lucide="sparkles" class="text-gold-500 w-3 h-3 sm:w-4 sm:h-4"></i> Kupal</span>
+                        <span class="bg-gold-50 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full flex items-center gap-1 sm:gap-1.5"><i data-lucide="sparkles" class="text-gold-500 w-3 h-3 sm:w-4 sm:h-4"></i> Buket Fresh</span>
+                        <span class="bg-gold-100 text-gold-800 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full flex items-center gap-1 sm:gap-1.5 w-full sm:w-auto mt-1 sm:mt-0 justify-center"><i data-lucide="gift" class="text-gold-600 w-3 h-3 sm:w-4 sm:h-4"></i> Makeup Balek Kloso <span class="font-normal opacity-80">(Gold & Diamond)</span></span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+                    <!-- Intimate Wedding -->
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-md hover:shadow-xl transition-all flex flex-col reveal delay-100">
+                        <h3 class="font-serif text-xl sm:text-2xl text-dark mb-1 sm:mb-2">Intimate Wedding</h3>
+                        <div class="text-3xl sm:text-4xl font-bold text-gold-500 mb-4 sm:mb-6">11<span class="text-base sm:text-xl text-gray-400 font-light"> Jt</span></div>
+                        
+                        <div class="space-y-4 sm:space-y-6 text-[11px] sm:text-sm text-gray-600 flex-grow border-t border-gray-100 pt-4 sm:pt-6">
+                            <div>
+                                <h4 class="font-bold text-dark mb-1.5 sm:mb-2 flex items-center gap-1.5 sm:gap-2"><i data-lucide="paintbrush-2" class="w-3 h-3 sm:w-4 sm:h-4 text-gold-500"></i> Rias & Busana</h4>
+                                <ul class="space-y-1 sm:space-y-1.5 pl-5 sm:pl-6 text-gray-500">
+                                    <li class="list-disc">Akad & Retouch Resepsi</li>
+                                    <li class="list-disc">Busana Akad + Resepsi (1x)</li>
+                                    <li class="list-disc">Makeup & Busana Ortu/Besan</li>
+                                    <li class="list-disc">Makeup Apit & Domas (4 org)</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-dark mb-1.5 sm:mb-2 flex items-center gap-1.5 sm:gap-2"><i data-lucide="party-popper" class="w-3 h-3 sm:w-4 sm:h-4 text-gold-500"></i> Dekorasi & Acara</h4>
+                                <ul class="space-y-1 sm:space-y-1.5 pl-5 sm:pl-6 text-gray-500">
+                                    <li class="list-disc">Pelaminan 6M, Dekor Dalam, Gabus, Pintu</li>
+                                    <li class="list-disc">Layos 1 Set, 100 Kursi, 4 Meja</li>
+                                    <li class="list-disc">Sound harian, Foto 1 Roll & Cetak</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Silver -->
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-md hover:shadow-xl transition-all flex flex-col relative overflow-hidden reveal delay-200">
+                        <div class="absolute top-0 inset-x-0 h-1.5 bg-gray-300"></div>
+                        <h3 class="font-serif text-xl sm:text-2xl text-dark mb-1 sm:mb-2">Paket Silver</h3>
+                        <div class="text-3xl sm:text-4xl font-bold text-gray-600 mb-4 sm:mb-6">14<span class="text-base sm:text-xl text-gray-400 font-light"> Jt</span></div>
+                        
+                        <div class="space-y-4 sm:space-y-6 text-[11px] sm:text-sm text-gray-600 flex-grow border-t border-gray-100 pt-4 sm:pt-6">
+                            <div>
+                                <h4 class="font-bold text-dark mb-1.5 sm:mb-2 flex items-center gap-1.5 sm:gap-2"><i data-lucide="paintbrush-2" class="w-3 h-3 sm:w-4 sm:h-4 text-gray-500"></i> Rias & Busana</h4>
+                                <ul class="space-y-1 sm:space-y-1.5 pl-5 sm:pl-6 text-gray-500">
+                                    <li class="list-disc">Akad & Resepsi</li>
+                                    <li class="list-disc">Busana Pengantin <span class="font-semibold text-dark">(2 Set)</span></li>
+                                    <li class="list-disc">Full Makeup & Busana Ortu/Besan & Apit/Domas</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-dark mb-1.5 sm:mb-2 flex items-center gap-1.5 sm:gap-2"><i data-lucide="party-popper" class="w-3 h-3 sm:w-4 sm:h-4 text-gray-500"></i> Dekorasi & Acara</h4>
+                                <ul class="space-y-1 sm:space-y-1.5 pl-5 sm:pl-6 text-gray-500">
+                                    <li class="list-disc"><span class="font-semibold text-dark">Pelaminan 8M</span>, Dekor Dalam, Kamar, Gabus</li>
+                                    <li class="list-disc">Layos 2 Set, Gazebo, 100 Kursi, 4 Meja</li>
+                                    <li class="list-disc"><span class="font-semibold text-dark">Hiburan:</span> MC, Singer 2, Solo Orgen, Panggung</li>
+                                    <li class="list-disc">Foto <span class="font-semibold text-dark">2 Roll</span> & File Cetak</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gold 1 -->
+                    <div class="bg-gradient-to-b from-white to-gold-50 p-6 sm:p-8 rounded-3xl border border-gold-200 shadow-lg hover:shadow-xl transition-all flex flex-col relative overflow-hidden md:col-span-2 lg:col-span-1 reveal delay-300">
+                        <div class="absolute top-0 inset-x-0 h-1.5 bg-gold-500"></div>
+                        <h3 class="font-serif text-xl sm:text-2xl text-gold-800 mb-1 sm:mb-2">Paket Gold I</h3>
+                        <div class="text-3xl sm:text-4xl font-bold text-gold-600 mb-4 sm:mb-6">17.5<span class="text-base sm:text-xl text-gray-400 font-light"> Jt</span></div>
+                        
+                        <div class="space-y-4 sm:space-y-6 text-[11px] sm:text-sm text-gray-700 flex-grow border-t border-gold-100 pt-4 sm:pt-6">
+                            <div>
+                                <h4 class="font-bold text-dark mb-1.5 sm:mb-2 flex items-center gap-1.5 sm:gap-2"><i data-lucide="paintbrush-2" class="w-3 h-3 sm:w-4 sm:h-4 text-gold-500"></i> Rias & Busana</h4>
+                                <ul class="space-y-1 sm:space-y-1.5 pl-5 sm:pl-6 text-gray-600">
+                                    <li class="list-disc">Akad & Resepsi</li>
+                                    <li class="list-disc">Busana Pengantin <span class="font-bold text-gold-700">(3 Set)</span></li>
+                                    <li class="list-disc">Full Makeup & Busana Ortu/Besan & Apit/Domas</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-dark mb-1.5 sm:mb-2 flex items-center gap-1.5 sm:gap-2"><i data-lucide="party-popper" class="w-3 h-3 sm:w-4 sm:h-4 text-gold-500"></i> Dekorasi & Acara</h4>
+                                <ul class="space-y-1 sm:space-y-1.5 pl-5 sm:pl-6 text-gray-600">
+                                    <li class="list-disc">Pelaminan 8M, Dekor Dalam, Kamar, Gabus, <span class="font-bold text-gold-700">Lorong</span></li>
+                                    <li class="list-disc">Layos 2 Set, Gazebo, 100 Kursi, 4 Meja, <span class="font-bold text-gold-700">Tambahan Lorong</span></li>
+                                    <li class="list-disc"><span class="font-bold text-gold-700">Hiburan:</span> MC, <span class="font-bold text-gold-700">Singer 3</span>, Solo Orgen, Panggung</li>
+                                    <li class="list-disc">Foto 2 Roll, Cetak, <span class="font-bold text-gold-700">Shooting 2 Keping</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Premium Tier Packages (Gold II & Diamond) -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mt-4 sm:mt-6 lg:mt-8">
+                    <!-- Gold II -->
+                    <div class="bg-dark p-6 sm:p-8 lg:p-10 rounded-3xl shadow-xl text-white relative overflow-hidden group reveal delay-100">
+                        <div class="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-gold-500 rounded-full blur-3xl opacity-10 group-hover:opacity-20 transition-opacity -translate-y-1/2 translate-x-1/2"></div>
+                        <h3 class="font-serif text-2xl sm:text-3xl mb-1">Paket Gold II</h3>
+                        <div class="text-3xl sm:text-4xl font-bold text-gold-400 mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-gray-700">19<span class="text-base sm:text-xl text-gray-500 font-light"> Jt</span></div>
+                        
+                        <div class="bg-white/5 p-4 rounded-2xl mb-6 border border-white/10">
+                            <p class="text-[11px] sm:text-sm text-gold-200 italic mb-2 sm:mb-3">Semua fasilitas luar biasa dari Gold I, ditambah pelayanan spesial:</p>
+                            <ul class="space-y-2 sm:space-y-3 text-[11px] sm:text-sm text-gray-300 pl-1 sm:pl-2">
+                                <li class="flex items-start gap-2 sm:gap-3">
+                                    <i data-lucide="users" class="w-4 h-4 sm:w-5 sm:h-5 text-gold-400 shrink-0"></i> 
+                                    <span><strong class="text-gold-400 font-bold tracking-wide">Wedding Organizer (WO)</strong>: 3 Personil profesional untuk mengatur kelancaran acara resepsi Anda.</span>
+                                </li>
+                                <li class="flex items-start gap-2 sm:gap-3">
+                                    <i data-lucide="coffee" class="w-4 h-4 sm:w-5 sm:h-5 text-gold-400 shrink-0"></i> 
+                                    <span>Tinggal terima beres dan menikmati momen tanpa pusing mengatur teknis acara di lapangan.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <button onclick="window.open(waLink, '_blank')" class="w-full bg-transparent border-2 border-gold-500 text-gold-400 text-center text-[10px] sm:text-sm font-bold uppercase tracking-widest py-3 sm:py-4 rounded-xl hover:bg-gold-500 hover:text-white transition-all">Pilih Paket Gold II</button>
+                    </div>
+
+                    <!-- Diamond -->
+                    <div class="bg-gradient-to-br from-gold-900 via-dark to-dark p-6 sm:p-8 lg:p-10 rounded-3xl shadow-2xl text-white relative overflow-hidden ring-1 ring-gold-500/50 reveal delay-200">
+                        <!-- Luxury BG Accents -->
+                        <div class="absolute -top-6 -right-6 sm:-top-10 sm:-right-10 w-32 h-32 sm:w-48 sm:h-48 bg-gold-400 rounded-full blur-3xl opacity-20"></div>
+                        <div class="absolute bottom-0 left-0 w-full h-1.5 bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300"></div>
+                        
+                        <div class="inline-block bg-gold-500/20 border border-gold-500/30 text-gold-300 text-[10px] sm:text-xs font-bold px-3 py-1 sm:px-4 sm:py-1.5 rounded-full tracking-widest uppercase mb-3 sm:mb-4">VVIP Package</div>
+                        <h3 class="font-serif text-2xl sm:text-3xl lg:text-4xl text-white mb-1 sm:mb-2">Diamond All-In</h3>
+                        <div class="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gold-200 to-gold-500 mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-gold-500/30">21.5<span class="text-base sm:text-xl text-gold-200/50 font-light"> Jt</span></div>
+                        
+                        <ul class="space-y-3 sm:space-y-4 text-[11px] sm:text-sm text-gray-300 mb-6 sm:mb-8">
+                            <li class="flex items-start gap-2 sm:gap-3">
+                                <i data-lucide="check-circle" class="w-4 h-4 sm:w-5 sm:h-5 text-gold-400 shrink-0"></i> 
+                                <span><strong class="text-white">Makeup VVIP:</strong> Akad + Retouch Resepsi & 3 Busana. Lengkap Ortu, Besan, Domas (4), Apit (2).</span>
+                            </li>
+                            <li class="flex items-start gap-2 sm:gap-3">
+                                <i data-lucide="check-circle" class="w-4 h-4 sm:w-5 sm:h-5 text-gold-400 shrink-0"></i> 
+                                <span><strong class="text-white">Dekor Premium:</strong> Pelaminan 6-8m + panggung, dalam, kamar, gabus, lorong, 2 stand foto, karpet jalan, fresh flower.</span>
+                            </li>
+                            <li class="flex items-start gap-2 sm:gap-3">
+                                <i data-lucide="check-circle" class="w-4 h-4 sm:w-5 sm:h-5 text-gold-400 shrink-0"></i> 
+                                <span><strong class="text-white">Layos Mewah:</strong> 2 Set (Aurora + Hias), 150 kursi, tirai 15m, Sound 2 Hari 2 Malam.</span>
+                            </li>
+                            <li class="flex items-start gap-2 sm:gap-3">
+                                <i data-lucide="check-circle" class="w-4 h-4 sm:w-5 sm:h-5 text-gold-400 shrink-0"></i> 
+                                <span><strong class="text-white">Dokumentasi Pro:</strong> Foto 2 roll, Video Tester, WCC (Wedding Content Creator).</span>
+                            </li>
+                            <li class="flex items-start gap-2 sm:gap-3">
+                                <i data-lucide="check-circle" class="w-4 h-4 sm:w-5 sm:h-5 text-gold-400 shrink-0"></i> 
+                                <span><strong class="text-white">WO Full Service:</strong> MC Wedding, 5 Crew, Tabur bunga, Flash mob, Lempar bunga, Doorprize.</span>
+                            </li>
+                        </ul>
+                        <button onclick="window.open(waLink, '_blank')" class="w-full bg-gradient-to-r from-gold-600 to-gold-400 text-white text-center text-[10px] sm:text-sm font-bold uppercase tracking-widest py-3 sm:py-4 rounded-xl hover:from-gold-500 hover:to-gold-300 shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all">Pilih Paket Diamond</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- TAB 2: PAKET BASIC -->
+            <div id="tab-basic" class="tab-content">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                    <!-- Prewedding -->
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-gold-300 transition-all duration-300 group flex flex-col reveal">
+                        <div class="bg-nude w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center mb-4 sm:mb-6 text-gold-500 group-hover:bg-gold-500 group-hover:text-white transition-colors">
+                            <i data-lucide="camera" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                        </div>
+                        <h3 class="font-serif text-xl sm:text-2xl text-dark mb-1 sm:mb-2">Prewedding</h3>
+                        <div class="text-2xl sm:text-3xl font-bold text-gold-500 mb-4 sm:mb-6">1.3<span class="text-sm sm:text-base text-gray-400 font-light"> Jt</span></div>
+                        <ul class="space-y-2 sm:space-y-3 text-[11px] sm:text-sm text-gray-600 mb-6 sm:mb-8 flex-grow">
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mt-0.5 shrink-0"></i> Makeup & Softlens</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mt-0.5 shrink-0"></i> Photographer</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mt-0.5 shrink-0"></i> File Foto</li>
+                        </ul>
+                        <button onclick="window.open(waLink, '_blank')" class="w-full text-center text-[10px] sm:text-xs font-bold uppercase tracking-widest text-dark border border-gray-200 py-2.5 sm:py-3 rounded-xl hover:border-gold-500 hover:bg-gold-50 transition-colors">Pilih Paket</button>
+                    </div>
+
+                    <!-- Tunangan -->
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-gold-300 transition-all duration-300 group flex flex-col reveal delay-100">
+                        <div class="bg-nude w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center mb-4 sm:mb-6 text-gold-500 group-hover:bg-gold-500 group-hover:text-white transition-colors">
+                            <i data-lucide="heart-handshake" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                        </div>
+                        <h3 class="font-serif text-xl sm:text-2xl text-dark mb-1 sm:mb-2">Tunangan</h3>
+                        <div class="text-2xl sm:text-3xl font-bold text-gold-500 mb-4 sm:mb-6">1.5<span class="text-sm sm:text-base text-gray-400 font-light"> Jt</span></div>
+                        <ul class="space-y-2 sm:space-y-3 text-[11px] sm:text-sm text-gray-600 mb-6 sm:mb-8 flex-grow">
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mt-0.5 shrink-0"></i> Makeup & Free Softlens</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mt-0.5 shrink-0"></i> Dekorasi (2.5m - 3m)</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mt-0.5 shrink-0"></i> Foto 1 Roll, Cetak & File</li>
+                        </ul>
+                        <button onclick="window.open(waLink, '_blank')" class="w-full text-center text-[10px] sm:text-xs font-bold uppercase tracking-widest text-dark border border-gray-200 py-2.5 sm:py-3 rounded-xl hover:border-gold-500 hover:bg-gold-50 transition-colors">Pilih Paket</button>
+                    </div>
+
+                    <!-- Akad -->
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-gold-300 transition-all duration-300 group flex flex-col reveal delay-200">
+                        <div class="bg-nude w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center mb-4 sm:mb-6 text-gold-500 group-hover:bg-gold-500 group-hover:text-white transition-colors">
+                            <i data-lucide="book-heart" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                        </div>
+                        <h3 class="font-serif text-xl sm:text-2xl text-dark mb-1 sm:mb-2">Akad Nikah</h3>
+                        <div class="text-2xl sm:text-3xl font-bold text-gold-500 mb-4 sm:mb-6">2.5<span class="text-sm sm:text-base text-gray-400 font-light"> Jt</span></div>
+                        <ul class="space-y-2 sm:space-y-3 text-[11px] sm:text-sm text-gray-600 mb-6 sm:mb-8 flex-grow">
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mt-0.5 shrink-0"></i> Makeup Busana Akad</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mt-0.5 shrink-0"></i> Melati Fresh</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mt-0.5 shrink-0"></i> Dekorasi (2.5m - 3m)</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mt-0.5 shrink-0"></i> Foto 1 Roll, Cetak & File</li>
+                        </ul>
+                        <button onclick="window.open(waLink, '_blank')" class="w-full text-center text-[10px] sm:text-xs font-bold uppercase tracking-widest text-dark border border-gray-200 py-2.5 sm:py-3 rounded-xl hover:border-gold-500 hover:bg-gold-50 transition-colors">Pilih Paket</button>
+                    </div>
+
+                    <!-- TNY Makeup -->
+                    <div class="bg-gradient-to-br from-gold-50 to-white p-6 sm:p-8 rounded-3xl border border-gold-200 shadow-md hover:shadow-xl hover:border-gold-400 transition-all duration-300 group flex flex-col relative overflow-hidden reveal delay-300">
+                        <div class="absolute top-0 right-0 w-12 h-12 sm:w-16 sm:h-16 bg-gold-100 rounded-bl-full flex items-start justify-end p-2.5 sm:p-3"><i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 text-gold-500"></i></div>
+                        <h3 class="font-serif text-xl sm:text-2xl text-dark mb-1 sm:mb-2 mt-2 sm:mt-4">TNY Makeup</h3>
+                        <div class="text-2xl sm:text-3xl font-bold text-gold-600 mb-4 sm:mb-6">3.5<span class="text-sm sm:text-base text-gray-400 font-light"> Jt</span></div>
+                        <ul class="space-y-2 sm:space-y-3 text-[11px] sm:text-sm text-gray-700 mb-6 sm:mb-8 flex-grow">
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3 h-3 sm:w-4 sm:h-4 text-gold-500 mt-0.5 shrink-0"></i> Makeup & Busana (Akad + Resepsi)</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3 h-3 sm:w-4 sm:h-4 text-gold-500 mt-0.5 shrink-0"></i> Makeup & Busana Ortu + Besan</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3 h-3 sm:w-4 sm:h-4 text-gold-500 mt-0.5 shrink-0"></i> Makeup & Busana Domas (4) + Apit (2)</li>
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3 h-3 sm:w-4 sm:h-4 text-gold-500 mt-0.5 shrink-0"></i> Melati Fresh (1 Adat)</li>
+                        </ul>
+                        <button onclick="window.open(waLink, '_blank')" class="w-full bg-gold-500 text-white text-center text-[10px] sm:text-xs font-bold uppercase tracking-widest py-2.5 sm:py-3 rounded-xl hover:bg-gold-600 shadow-md transition-all">Pilih Paket</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: MAKEUP SATUAN -->
+            <div id="tab-satuan" class="tab-content">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
                     <!-- Regular -->
                     <div class="bg-white p-6 sm:p-8 lg:p-10 rounded-3xl shadow-lg border border-gray-100 reveal delay-100">
@@ -299,230 +530,6 @@
                         <button onclick="window.open(waLink, '_blank')" class="w-full bg-gold-500 text-white font-bold uppercase tracking-widest text-[10px] sm:text-xs py-3 sm:py-4 rounded-xl hover:bg-gold-600 shadow-md hover:shadow-lg transition-all">Booking Premium</button>
                     </div>
                 </div>
-            </div>
-
-            <!-- TAB 2: PAKET BASIC -->
-            <div id="tab-basic" class="tab-content">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                    <!-- Prewedding -->
-                    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-gold-300 transition-all duration-300 group flex flex-col">
-                        <div class="bg-nude w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center mb-4 sm:mb-6 text-gold-500 group-hover:bg-gold-500 group-hover:text-white transition-colors">
-                            <i data-lucide="camera" class="w-4 h-4 sm:w-5 sm:h-5"></i>
-                        </div>
-                        <h3 class="font-serif text-xl sm:text-2xl text-dark mb-1 sm:mb-2">Prewedding</h3>
-                        <div class="text-2xl sm:text-3xl font-bold text-gold-500 mb-4 sm:mb-6">1.3<span class="text-sm sm:text-base text-gray-400 font-light"> Jt</span></div>
-                        <ul class="space-y-2 sm:space-y-3 text-[11px] sm:text-sm text-gray-600 mb-6 sm:mb-8 flex-grow">
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mt-0.5 shrink-0"></i> Makeup & Softlens</li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mt-0.5 shrink-0"></i> Photographer</li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mt-0.5 shrink-0"></i> File Foto</li>
-                        </ul>
-                        <button onclick="window.open(waLink, '_blank')" class="w-full text-center text-[10px] sm:text-xs font-bold uppercase tracking-widest text-dark border border-gray-200 py-2.5 sm:py-3 rounded-xl hover:border-gold-500 hover:bg-gold-50 transition-colors">Pilih Paket</button>
-                    </div>
-
-                    <!-- Tunangan -->
-                    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-gold-300 transition-all duration-300 group flex flex-col">
-                        <div class="bg-nude w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center mb-4 sm:mb-6 text-gold-500 group-hover:bg-gold-500 group-hover:text-white transition-colors">
-                            <i data-lucide="heart-handshake" class="w-4 h-4 sm:w-5 sm:h-5"></i>
-                        </div>
-                        <h3 class="font-serif text-xl sm:text-2xl text-dark mb-1 sm:mb-2">Tunangan</h3>
-                        <div class="text-2xl sm:text-3xl font-bold text-gold-500 mb-4 sm:mb-6">1.5<span class="text-sm sm:text-base text-gray-400 font-light"> Jt</span></div>
-                        <ul class="space-y-2 sm:space-y-3 text-[11px] sm:text-sm text-gray-600 mb-6 sm:mb-8 flex-grow">
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mt-0.5 shrink-0"></i> Makeup & Free Softlens</li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mt-0.5 shrink-0"></i> Dekorasi (2.5m - 3m)</li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mt-0.5 shrink-0"></i> Foto 1 Roll, Cetak & File</li>
-                        </ul>
-                        <button onclick="window.open(waLink, '_blank')" class="w-full text-center text-[10px] sm:text-xs font-bold uppercase tracking-widest text-dark border border-gray-200 py-2.5 sm:py-3 rounded-xl hover:border-gold-500 hover:bg-gold-50 transition-colors">Pilih Paket</button>
-                    </div>
-
-                    <!-- Akad -->
-                    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-gold-300 transition-all duration-300 group flex flex-col">
-                        <div class="bg-nude w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center mb-4 sm:mb-6 text-gold-500 group-hover:bg-gold-500 group-hover:text-white transition-colors">
-                            <i data-lucide="book-heart" class="w-4 h-4 sm:w-5 sm:h-5"></i>
-                        </div>
-                        <h3 class="font-serif text-xl sm:text-2xl text-dark mb-1 sm:mb-2">Akad Nikah</h3>
-                        <div class="text-2xl sm:text-3xl font-bold text-gold-500 mb-4 sm:mb-6">2.5<span class="text-sm sm:text-base text-gray-400 font-light"> Jt</span></div>
-                        <ul class="space-y-2 sm:space-y-3 text-[11px] sm:text-sm text-gray-600 mb-6 sm:mb-8 flex-grow">
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mt-0.5 shrink-0"></i> Makeup Busana Akad</li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mt-0.5 shrink-0"></i> Melati Fresh</li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mt-0.5 shrink-0"></i> Dekorasi (2.5m - 3m)</li>
-                            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mt-0.5 shrink-0"></i> Foto 1 Roll, Cetak & File</li>
-                        </ul>
-                        <button onclick="window.open(waLink, '_blank')" class="w-full text-center text-[10px] sm:text-xs font-bold uppercase tracking-widest text-dark border border-gray-200 py-2.5 sm:py-3 rounded-xl hover:border-gold-500 hover:bg-gold-50 transition-colors">Pilih Paket</button>
-                    </div>
-
-                    <!-- TNY Makeup -->
-                    <div class="bg-gradient-to-br from-gold-50 to-white p-6 sm:p-8 rounded-3xl border border-gold-200 shadow-md hover:shadow-xl hover:border-gold-400 transition-all duration-300 group flex flex-col relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-12 h-12 sm:w-16 sm:h-16 bg-gold-100 rounded-bl-full flex items-start justify-end p-2.5 sm:p-3"><i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 text-gold-500"></i></div>
-                        <h3 class="font-serif text-xl sm:text-2xl text-dark mb-1 sm:mb-2 mt-2 sm:mt-4">TNY Makeup</h3>
-                        <div class="text-2xl sm:text-3xl font-bold text-gold-600 mb-4 sm:mb-6">3.5<span class="text-sm sm:text-base text-gray-400 font-light"> Jt</span></div>
-                        <ul class="space-y-2 sm:space-y-3 text-[11px] sm:text-sm text-gray-700 mb-6 sm:mb-8 flex-grow">
-                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3 h-3 sm:w-4 sm:h-4 text-gold-500 mt-0.5 shrink-0"></i> Makeup & Busana (Akad + Resepsi)</li>
-                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3 h-3 sm:w-4 sm:h-4 text-gold-500 mt-0.5 shrink-0"></i> Makeup & Busana Ortu + Besan</li>
-                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3 h-3 sm:w-4 sm:h-4 text-gold-500 mt-0.5 shrink-0"></i> Makeup & Busana Domas (4) + Apit (2)</li>
-                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3 h-3 sm:w-4 sm:h-4 text-gold-500 mt-0.5 shrink-0"></i> Melati Fresh (1 Adat)</li>
-                        </ul>
-                        <button onclick="window.open(waLink, '_blank')" class="w-full bg-gold-500 text-white text-center text-[10px] sm:text-xs font-bold uppercase tracking-widest py-2.5 sm:py-3 rounded-xl hover:bg-gold-600 shadow-md transition-all">Pilih Paket</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TAB 3: WEDDING ALL-IN -->
-            <div id="tab-wedding" class="tab-content">
-                
-                <!-- Free Features Banner for Big Packages -->
-                <div class="bg-white/80 backdrop-blur-sm border border-gold-200 p-4 sm:p-6 mb-6 sm:mb-10 text-center rounded-2xl shadow-sm">
-                    <p class="text-xs sm:text-sm text-gold-800 font-bold mb-2 sm:mb-3 uppercase tracking-widest">Bonus Spesial All-In Package:</p>
-                    <div class="flex flex-wrap justify-center items-center gap-2 sm:gap-3 lg:gap-6 text-[10px] sm:text-xs lg:text-sm font-medium text-gray-700">
-                        <span class="bg-gold-50 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full flex items-center gap-1 sm:gap-1.5"><i data-lucide="sparkles" class="text-gold-500 w-3 h-3 sm:w-4 sm:h-4"></i> Henna</span>
-                        <span class="bg-gold-50 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full flex items-center gap-1 sm:gap-1.5"><i data-lucide="sparkles" class="text-gold-500 w-3 h-3 sm:w-4 sm:h-4"></i> Softlens</span>
-                        <span class="bg-gold-50 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full flex items-center gap-1 sm:gap-1.5"><i data-lucide="sparkles" class="text-gold-500 w-3 h-3 sm:w-4 sm:h-4"></i> Kupal</span>
-                        <span class="bg-gold-50 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full flex items-center gap-1 sm:gap-1.5"><i data-lucide="sparkles" class="text-gold-500 w-3 h-3 sm:w-4 sm:h-4"></i> Buket Fresh</span>
-                        <span class="bg-gold-100 text-gold-800 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full flex items-center gap-1 sm:gap-1.5 w-full sm:w-auto mt-1 sm:mt-0 justify-center"><i data-lucide="gift" class="text-gold-600 w-3 h-3 sm:w-4 sm:h-4"></i> Makeup Balek Kloso <span class="font-normal opacity-80">(Gold & Diamond)</span></span>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-                    <!-- Intimate Wedding -->
-                    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-md hover:shadow-xl transition-all flex flex-col">
-                        <h3 class="font-serif text-xl sm:text-2xl text-dark mb-1 sm:mb-2">Intimate Wedding</h3>
-                        <div class="text-3xl sm:text-4xl font-bold text-gold-500 mb-4 sm:mb-6">11<span class="text-base sm:text-xl text-gray-400 font-light"> Jt</span></div>
-                        
-                        <div class="space-y-4 sm:space-y-6 text-[11px] sm:text-sm text-gray-600 flex-grow border-t border-gray-100 pt-4 sm:pt-6">
-                            <div>
-                                <h4 class="font-bold text-dark mb-1.5 sm:mb-2 flex items-center gap-1.5 sm:gap-2"><i data-lucide="paintbrush-2" class="w-3 h-3 sm:w-4 sm:h-4 text-gold-500"></i> Rias & Busana</h4>
-                                <ul class="space-y-1 sm:space-y-1.5 pl-5 sm:pl-6 text-gray-500">
-                                    <li class="list-disc">Akad & Retouch Resepsi</li>
-                                    <li class="list-disc">Busana Akad + Resepsi (1x)</li>
-                                    <li class="list-disc">Makeup & Busana Ortu/Besan</li>
-                                    <li class="list-disc">Makeup Apit & Domas (4 org)</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-dark mb-1.5 sm:mb-2 flex items-center gap-1.5 sm:gap-2"><i data-lucide="party-popper" class="w-3 h-3 sm:w-4 sm:h-4 text-gold-500"></i> Dekorasi & Acara</h4>
-                                <ul class="space-y-1 sm:space-y-1.5 pl-5 sm:pl-6 text-gray-500">
-                                    <li class="list-disc">Pelaminan 6M, Dekor Dalam, Gabus, Pintu</li>
-                                    <li class="list-disc">Layos 1 Set, 100 Kursi, 4 Meja</li>
-                                    <li class="list-disc">Sound harian, Foto 1 Roll & Cetak</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Silver -->
-                    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-md hover:shadow-xl transition-all flex flex-col relative overflow-hidden">
-                        <div class="absolute top-0 inset-x-0 h-1.5 bg-gray-300"></div>
-                        <h3 class="font-serif text-xl sm:text-2xl text-dark mb-1 sm:mb-2">Paket Silver</h3>
-                        <div class="text-3xl sm:text-4xl font-bold text-gray-600 mb-4 sm:mb-6">14<span class="text-base sm:text-xl text-gray-400 font-light"> Jt</span></div>
-                        
-                        <div class="space-y-4 sm:space-y-6 text-[11px] sm:text-sm text-gray-600 flex-grow border-t border-gray-100 pt-4 sm:pt-6">
-                            <div>
-                                <h4 class="font-bold text-dark mb-1.5 sm:mb-2 flex items-center gap-1.5 sm:gap-2"><i data-lucide="paintbrush-2" class="w-3 h-3 sm:w-4 sm:h-4 text-gray-500"></i> Rias & Busana</h4>
-                                <ul class="space-y-1 sm:space-y-1.5 pl-5 sm:pl-6 text-gray-500">
-                                    <li class="list-disc">Akad & Resepsi</li>
-                                    <li class="list-disc">Busana Pengantin <span class="font-semibold text-dark">(2 Set)</span></li>
-                                    <li class="list-disc">Full Makeup & Busana Ortu/Besan & Apit/Domas</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-dark mb-1.5 sm:mb-2 flex items-center gap-1.5 sm:gap-2"><i data-lucide="party-popper" class="w-3 h-3 sm:w-4 sm:h-4 text-gray-500"></i> Dekorasi & Acara</h4>
-                                <ul class="space-y-1 sm:space-y-1.5 pl-5 sm:pl-6 text-gray-500">
-                                    <li class="list-disc"><span class="font-semibold text-dark">Pelaminan 8M</span>, Dekor Dalam, Kamar, Gabus</li>
-                                    <li class="list-disc">Layos 2 Set, Gazebo, 100 Kursi, 4 Meja</li>
-                                    <li class="list-disc"><span class="font-semibold text-dark">Hiburan:</span> MC, Singer 2, Solo Orgen, Panggung</li>
-                                    <li class="list-disc">Foto <span class="font-semibold text-dark">2 Roll</span> & File Cetak</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Gold 1 -->
-                    <div class="bg-gradient-to-b from-white to-gold-50 p-6 sm:p-8 rounded-3xl border border-gold-200 shadow-lg hover:shadow-xl transition-all flex flex-col relative overflow-hidden md:col-span-2 lg:col-span-1">
-                        <div class="absolute top-0 inset-x-0 h-1.5 bg-gold-500"></div>
-                        <h3 class="font-serif text-xl sm:text-2xl text-gold-800 mb-1 sm:mb-2">Paket Gold I</h3>
-                        <div class="text-3xl sm:text-4xl font-bold text-gold-600 mb-4 sm:mb-6">17.5<span class="text-base sm:text-xl text-gray-400 font-light"> Jt</span></div>
-                        
-                        <div class="space-y-4 sm:space-y-6 text-[11px] sm:text-sm text-gray-700 flex-grow border-t border-gold-100 pt-4 sm:pt-6">
-                            <div>
-                                <h4 class="font-bold text-dark mb-1.5 sm:mb-2 flex items-center gap-1.5 sm:gap-2"><i data-lucide="paintbrush-2" class="w-3 h-3 sm:w-4 sm:h-4 text-gold-500"></i> Rias & Busana</h4>
-                                <ul class="space-y-1 sm:space-y-1.5 pl-5 sm:pl-6 text-gray-600">
-                                    <li class="list-disc">Akad & Resepsi</li>
-                                    <li class="list-disc">Busana Pengantin <span class="font-bold text-gold-700">(3 Set)</span></li>
-                                    <li class="list-disc">Full Makeup & Busana Ortu/Besan & Apit/Domas</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-dark mb-1.5 sm:mb-2 flex items-center gap-1.5 sm:gap-2"><i data-lucide="party-popper" class="w-3 h-3 sm:w-4 sm:h-4 text-gold-500"></i> Dekorasi & Acara</h4>
-                                <ul class="space-y-1 sm:space-y-1.5 pl-5 sm:pl-6 text-gray-600">
-                                    <li class="list-disc">Pelaminan 8M, Dekor Dalam, Kamar, Gabus, <span class="font-bold text-gold-700">Lorong</span></li>
-                                    <li class="list-disc">Layos 2 Set, Gazebo, 100 Kursi, 4 Meja, <span class="font-bold text-gold-700">Tambahan Lorong</span></li>
-                                    <li class="list-disc"><span class="font-bold text-gold-700">Hiburan:</span> MC, <span class="font-bold text-gold-700">Singer 3</span>, Solo Orgen, Panggung</li>
-                                    <li class="list-disc">Foto 2 Roll, Cetak, <span class="font-bold text-gold-700">Shooting 2 Keping</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Premium Tier Packages (Gold II & Diamond) -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mt-4 sm:mt-6 lg:mt-8">
-                    <!-- Gold II -->
-                    <div class="bg-dark p-6 sm:p-8 lg:p-10 rounded-3xl shadow-xl text-white relative overflow-hidden group">
-                        <div class="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-gold-500 rounded-full blur-3xl opacity-10 group-hover:opacity-20 transition-opacity -translate-y-1/2 translate-x-1/2"></div>
-                        <h3 class="font-serif text-2xl sm:text-3xl mb-1">Paket Gold II</h3>
-                        <div class="text-3xl sm:text-4xl font-bold text-gold-400 mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-gray-700">19<span class="text-base sm:text-xl text-gray-500 font-light"> Jt</span></div>
-                        
-                        <div class="bg-white/5 p-4 rounded-2xl mb-6 border border-white/10">
-                            <p class="text-[11px] sm:text-sm text-gold-200 italic mb-2 sm:mb-3">Semua fasilitas luar biasa dari Gold I, ditambah pelayanan spesial:</p>
-                            <ul class="space-y-2 sm:space-y-3 text-[11px] sm:text-sm text-gray-300 pl-1 sm:pl-2">
-                                <li class="flex items-start gap-2 sm:gap-3">
-                                    <i data-lucide="users" class="w-4 h-4 sm:w-5 sm:h-5 text-gold-400 shrink-0"></i> 
-                                    <span><strong class="text-gold-400 font-bold tracking-wide">Wedding Organizer (WO)</strong>: 3 Personil profesional untuk mengatur kelancaran acara resepsi Anda.</span>
-                                </li>
-                                <li class="flex items-start gap-2 sm:gap-3">
-                                    <i data-lucide="coffee" class="w-4 h-4 sm:w-5 sm:h-5 text-gold-400 shrink-0"></i> 
-                                    <span>Tinggal terima beres dan menikmati momen tanpa pusing mengatur teknis acara di lapangan.</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <button onclick="window.open(waLink, '_blank')" class="w-full bg-transparent border-2 border-gold-500 text-gold-400 text-center text-[10px] sm:text-sm font-bold uppercase tracking-widest py-3 sm:py-4 rounded-xl hover:bg-gold-500 hover:text-white transition-all">Pilih Paket Gold II</button>
-                    </div>
-
-                    <!-- Diamond -->
-                    <div class="bg-gradient-to-br from-gold-900 via-dark to-dark p-6 sm:p-8 lg:p-10 rounded-3xl shadow-2xl text-white relative overflow-hidden ring-1 ring-gold-500/50">
-                        <!-- Luxury BG Accents -->
-                        <div class="absolute -top-6 -right-6 sm:-top-10 sm:-right-10 w-32 h-32 sm:w-48 sm:h-48 bg-gold-400 rounded-full blur-3xl opacity-20"></div>
-                        <div class="absolute bottom-0 left-0 w-full h-1.5 bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300"></div>
-                        
-                        <div class="inline-block bg-gold-500/20 border border-gold-500/30 text-gold-300 text-[10px] sm:text-xs font-bold px-3 py-1 sm:px-4 sm:py-1.5 rounded-full tracking-widest uppercase mb-3 sm:mb-4">VVIP Package</div>
-                        <h3 class="font-serif text-2xl sm:text-3xl lg:text-4xl text-white mb-1 sm:mb-2">Diamond All-In</h3>
-                        <div class="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gold-200 to-gold-500 mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-gold-500/30">21.5<span class="text-base sm:text-xl text-gold-200/50 font-light"> Jt</span></div>
-                        
-                        <ul class="space-y-3 sm:space-y-4 text-[11px] sm:text-sm text-gray-300 mb-6 sm:mb-8">
-                            <li class="flex items-start gap-2 sm:gap-3">
-                                <i data-lucide="check-circle" class="w-4 h-4 sm:w-5 sm:h-5 text-gold-400 shrink-0"></i> 
-                                <span><strong class="text-white">Makeup VVIP:</strong> Akad + Retouch Resepsi & 3 Busana. Lengkap Ortu, Besan, Domas (4), Apit (2).</span>
-                            </li>
-                            <li class="flex items-start gap-2 sm:gap-3">
-                                <i data-lucide="check-circle" class="w-4 h-4 sm:w-5 sm:h-5 text-gold-400 shrink-0"></i> 
-                                <span><strong class="text-white">Dekor Premium:</strong> Pelaminan 6-8m + panggung, dalam, kamar, gabus, lorong, 2 stand foto, karpet jalan, fresh flower.</span>
-                            </li>
-                            <li class="flex items-start gap-2 sm:gap-3">
-                                <i data-lucide="check-circle" class="w-4 h-4 sm:w-5 sm:h-5 text-gold-400 shrink-0"></i> 
-                                <span><strong class="text-white">Layos Mewah:</strong> 2 Set (Aurora + Hias), 150 kursi, tirai 15m, Sound 2 Hari 2 Malam.</span>
-                            </li>
-                            <li class="flex items-start gap-2 sm:gap-3">
-                                <i data-lucide="check-circle" class="w-4 h-4 sm:w-5 sm:h-5 text-gold-400 shrink-0"></i> 
-                                <span><strong class="text-white">Dokumentasi Pro:</strong> Foto 2 roll, Video Tester, WCC (Wedding Content Creator).</span>
-                            </li>
-                            <li class="flex items-start gap-2 sm:gap-3">
-                                <i data-lucide="check-circle" class="w-4 h-4 sm:w-5 sm:h-5 text-gold-400 shrink-0"></i> 
-                                <span><strong class="text-white">WO Full Service:</strong> MC Wedding, 5 Crew, Tabur bunga, Flash mob, Lempar bunga, Doorprize.</span>
-                            </li>
-                        </ul>
-                        <button onclick="window.open(waLink, '_blank')" class="w-full bg-gradient-to-r from-gold-600 to-gold-400 text-white text-center text-[10px] sm:text-sm font-bold uppercase tracking-widest py-3 sm:py-4 rounded-xl hover:from-gold-500 hover:to-gold-300 shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all">Pilih Paket Diamond</button>
-                    </div>
-                </div>
-
             </div>
 
             <!-- Global Notes -->
